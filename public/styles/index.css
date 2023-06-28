@@ -1,11 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Source+Sans+Pro:ital,wght@0,200;0,400;0,700;1,200&display=swap');
 
+:root {
+  --white: #f0f0f0;
+  --very-light: #f4effaff; /* Magnolia */
+  --light: #c8b1e4ff; /* Wisteria */
+  --medium: #9b72cfff; /* Amethyst */
+  --dark: #532b88ff; /* Tekhelet */
+  --very-dark: #2f184bff; /* Russian Violet */
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
+  background-color: var(--very-dark);
   font-family: 'Source Sans Pro', sans-serif;
-  margin: 0;
   height: 100vh;
+  margin: 0;
+}
+
+/* Navbar */
+.nav-text {
+  margin-left: 15px;
+}
+
+#nav-container {
+  border-right: 1px solid var(--light);
+  display: flex;
+  flex-direction: column;
+  width: 26%;
+  height: 100vh;
+  padding-left: 120px;
+}
+
+#nav-button {
+  background-color: var(--medium);
+  border-radius: 30px;
+  color: var(--white);
+  font-size: 15pt;
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  width: 230px;
+}
+
+.nav-link {
+  align-items: center;
+  color: var(--white);
+  display: flex;
+  font-size: 16pt;
+  margin: 3px;
+  text-decoration: none;
+  padding: 10px;
+  padding-right: 25px;
+  width: min-content;
+}
+
+.nav-link:hover {
+  background-color: var(--dark);
+  border-radius: 25px;
 }
