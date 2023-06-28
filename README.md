@@ -1,6 +1,4 @@
-# React Boilerplate with Bcrypt Authentication
-
-This boilerplate provides a simple and secure foundation for building a full-stack React application with user authentication using Bcrypt. The project includes a back-end server using Express and a front-end application built with React. The boilerplate includes user login and signup features, as well as middleware to protect routes and user data.
+# Twitter Clone - PERN Stack
 
 ## Features
 
