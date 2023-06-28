@@ -1,6 +1,7 @@
 const db = require('./server/db/db');
-const User = require('./server/db/models/User');
-const Tweet = require('./server/db/models/Tweet');
+// const User = require('./server/db/models/User');
+// const Tweet = require('./server/db/models/Tweet');
+const { User, Tweet } = require('./server/db/index');
 
 const users = [
   {

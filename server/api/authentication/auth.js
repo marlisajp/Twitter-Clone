@@ -7,7 +7,9 @@ router.post('/login', async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({
+      where: { email },
+    });
     if (!user) {
       return res.status(401).json({ error: 'User not found' });
     }
@@ -21,9 +23,8 @@ router.post('/login', async (req, res, next) => {
       expiresIn: '1h',
     });
 
-    res.json({ token });
+    res.json({ token, user });
   } catch (error) {
-    console.error('error logging in', error);
     next(error);
   }
 });

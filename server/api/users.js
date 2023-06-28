@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const User = require('../db/models/User');
+const Tweet = require('../db/models/Tweet');
 const { requireAuth } = require('./authentication/authMiddleware');
 const adminAuth = require('./authentication/adminAuth');
 
-router.get('/all', adminAuth, async (req, res, next) => {
+router.get('/all', async (req, res, next) => {
   try {
-    const allUsers = await User.findAll();
+    const allUsers = await User.findAll({ include: [Tweet] });
     res.send(allUsers);
   } catch (error) {
     console.error('error getting users');
@@ -13,10 +14,10 @@ router.get('/all', adminAuth, async (req, res, next) => {
   }
 });
 
-router.get('/:id', requireAuth, async (req, res, next) => {
+router.get('/:userId', async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const user = await User.findByPk(id);
+    const { userId } = req.params;
+    const user = await User.findByPk(userId);
 
     if (!user) {
       return res.status(404).json({ error: 'User not found' });

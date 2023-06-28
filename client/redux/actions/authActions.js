@@ -9,7 +9,7 @@ export const login = createAsyncThunk(
         email,
         password,
       });
-      return response.data.token;
+      return response.data;
     } catch (error) {
       console.error('error logging in user', error);
       throw error;
