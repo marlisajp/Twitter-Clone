@@ -1,9 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Button from './Nav/Button';
+import { useDispatch } from 'react-redux';
+import { logout } from '../redux/actions/authActions';
 
 const NavBar = ({ user }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/login');
+  };
+
   return (
     <div id='nav-container'>
       <Button iconName='logo' link='/home' />
@@ -18,6 +28,9 @@ const NavBar = ({ user }) => {
       <Button iconName='profile' text='Profile' link='/profile' />
       <Link id='nav-button' to='/compose/tweet'>
         Tweet
+      </Link>
+      <Link id='logout-button' onClick={handleLogout}>
+        Logout
       </Link>
     </div>
   );

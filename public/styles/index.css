@@ -34,6 +34,7 @@ body {
   width: 26%;
   height: 100vh;
   padding-left: 120px;
+  position: relative;
   /* position: sticky; */
 }
 
@@ -64,4 +65,75 @@ body {
 .nav-link:hover {
   background-color: var(--dark);
   border-radius: 25px;
+}
+
+#logout-button {
+  border: 2px solid;
+  border-radius: 30px;
+  color: var(--medium);
+  font-size: 15pt;
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  width: 230px;
+}
+
+/* Sub Nav */
+.middle-container {
+  width: 41%;
+  border-right: 1px solid var(--light);
+}
+
+.sub-nav-container {
+  /* padding: 12px; */
+  border-bottom: 1px solid var(--light);
+  height: 110px;
+  background-color: rgba(47, 24, 75, 0.507);
+}
+
+#sub-nav-text {
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+/* HomePage */
+.home-container {
+  display: flex;
+}
+
+.name-settings-container {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--white);
+  height: 50%;
+}
+
+.sub-tabs-container {
+  display: flex;
+  justify-content: space-around;
+  height: 50%;
+}
+
+.sub-nav-link {
+  color: var(--white);
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.sub-nav-link:hover {
+  background-color: var(--dark);
+}
+
+.tab-active {
+  border-bottom: 4px solid var(--light);
+}
+
+.tab-inactive {
+  color: rgb(165, 165, 165);
 }

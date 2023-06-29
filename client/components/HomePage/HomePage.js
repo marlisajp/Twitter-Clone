@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser, logout } from '../../redux/actions/authActions';
-import { useNavigate } from 'react-router';
+
+import { getUser } from '../../redux/actions/authActions';
 import NavBar from '../NavBar';
 import { userSelector } from '../../redux/reducers/authReducer';
+import SubNavBar from '../Nav/SubNavBar';
+import TweetFeed from '../Feed/TweetFeed';
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const user = useSelector(userSelector);
   console.log('user', user);
 
@@ -15,16 +16,13 @@ const HomePage = () => {
     dispatch(getUser());
   }, []);
 
-  const handleLogout = async () => {
-    await dispatch(logout());
-    navigate('/login');
-  };
-
   return (
-    <div className='container'>
+    <div className='home-container'>
       <NavBar />
-      <p>Logged in </p>
-      <button onClick={handleLogout}>Logout</button>
+      <div className='middle-container'>
+        <SubNavBar name='home' hasSettingsIcon={true} />
+        <TweetFeed />
+      </div>
     </div>
   );
 };
