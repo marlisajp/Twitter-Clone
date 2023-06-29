@@ -74,4 +74,25 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.get('/getUser', async (req, res, next) => {
+  try {
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (token == null) return res.sendStatus(401);
+
+    jwt.verify(token, process.env.JWT_SECRET, async (err, user) => {
+      if (err) return res.sendStatus(403);
+
+      const getUser = await User.findOne({ where: { id: user.id } });
+      if (!getUser) res.send('Cannot find user');
+      console.log('user in server:', getUser);
+      res.send(getUser);
+    });
+  } catch (error) {
+    console.error('error fetching user');
+    next(error);
+  }
+});
+
 module.exports = router;

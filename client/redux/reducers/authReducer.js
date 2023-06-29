@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { login, signup, logout } from '../actions/authActions';
+import { login, signup, logout, getUser } from '../actions/authActions';
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -29,6 +29,15 @@ export const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.token = null;
+      })
+      .addCase(getUser.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.token = action.payload.token;
+          state.user = action.payload.user;
+        } else {
+          state.token = null;
+          state.user = null;
+        }
       });
   },
 });

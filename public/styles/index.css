@@ -2,6 +2,7 @@
 
 :root {
   --white: #f0f0f0;
+  --black: #151515;
   --very-light: #f4effaff; /* Magnolia */
   --light: #c8b1e4ff; /* Wisteria */
   --medium: #9b72cfff; /* Amethyst */
@@ -23,6 +24,7 @@ body {
 /* Navbar */
 .nav-text {
   margin-left: 15px;
+  margin-right: 20px;
 }
 
 #nav-container {
@@ -32,6 +34,7 @@ body {
   width: 26%;
   height: 100vh;
   padding-left: 120px;
+  /* position: sticky; */
 }
 
 #nav-button {
@@ -55,7 +58,6 @@ body {
   margin: 3px;
   text-decoration: none;
   padding: 10px;
-  padding-right: 25px;
   width: min-content;
 }
 

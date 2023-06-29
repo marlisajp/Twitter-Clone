@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Routes, Route, useNavigate } from 'react-router';
 
 import NavBar from './NavBar';
@@ -11,25 +11,22 @@ import { userSelector } from '../redux/reducers/authReducer';
 const App = () => {
   const navigate = useNavigate();
   const user = useSelector(userSelector);
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate('/home');
+    } else {
+      navigate('/login');
     }
-  }, [user, navigate]);
+  }, [token, navigate]);
 
   return (
     <div className='app-container'>
-      <NavBar user={user} />
       <Routes>
-        {!user ? (
-          <>
-            <Route path='/login' element={<Login />} />
-            <Route path='/signup' element={<SignUp />} />
-          </>
-        ) : (
-          <Route path='/home' element={<HomePage user={user} />} />
-        )}
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/home' element={<HomePage user={user} />} />
       </Routes>
     </div>
   );
