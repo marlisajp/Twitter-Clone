@@ -25,7 +25,7 @@ const tabs = {
 const SubNavBar = ({ name, hasSettingsIcon }) => {
   const [activeTab, setActiveTab] = useState(
     tabs[name].tabs ? tabs[name].tabs[0] : ''
-  ); // Set the first tab as the active tab
+  );
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);

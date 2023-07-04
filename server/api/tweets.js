@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Tweet, User } = require('../db/index');
+const TrendingTweet = require('../db/models/TrendingTweet');
 const {
   requireUserMatch,
   requireAuth,
@@ -32,10 +33,25 @@ router.get('/user/:userId', async (req, res, next) => {
 router.post('/user/:userId/createTweet', async (req, res, next) => {
   try {
     const newTweet = req.body;
-    const createTweet = await Tweet.create(newTweet);
+    console.log('id', req.params.userId);
+    console.log('newtweet', newTweet);
+    const createTweet = await Tweet.create({
+      ...newTweet,
+      userId: req.params.userId,
+    });
     res.status(202).send(createTweet);
   } catch (error) {
     console.error('error creating new tweet for user', error);
+    next(error);
+  }
+});
+
+router.get('/trending', async (req, res, next) => {
+  try {
+    const trendingTweets = await TrendingTweet.findAll();
+    res.send(trendingTweets);
+  } catch (error) {
+    console.error('error fetching trending tweets', error);
     next(error);
   }
 });
